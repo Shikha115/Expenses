@@ -1,6 +1,7 @@
 import React from "react";
 
 function ExpenseDate({ date }) {
+
   return (
     <div className="expense-date">
       <div className="expense-date__month">
