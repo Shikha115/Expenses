@@ -4,13 +4,8 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 import Expenses from "./Components/Expenses";
 
-const UserContext = createContext();
+export const UserContext = createContext();
 function App() {
-  // =======================================================================
-  const [name, setname] = useState("");
-  const [amount, setamount] = useState("");
-  const [date, setdate] = useState("");
-  // =======================================================================
 
   const [expenses, setexpenses] = useState([
     {
@@ -35,7 +30,7 @@ function App() {
   ]);
 
   return (
-    <UserContext.Provider value={{name:[name, setname],amount:[amount, setamount],date:[date, setdate]}}>
+    <UserContext.Provider value={[expenses, setexpenses]}>
       <Expenses data={expenses} />
     </UserContext.Provider>
   );

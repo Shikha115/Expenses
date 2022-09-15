@@ -1,13 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { UserContext } from "../App";
 
 function ExpenseForm({setshowForm}) {
   const [name, setname] = useState("");
   const [amount, setamount] = useState("");
   const [date, setdate] = useState("");
-// const {name,amount,date} = useContext(UserContext);
-//   const [name, setname] = name;
-//   const [amount, setamount] = amount;
-//   const [date, setdate] = date;
+  const [expenses, setexpenses] = useContext(UserContext);
+
+
+  useEffect(() => {
+  console.log(expenses);
+}, [expenses])
+
+
   const handleSubmit = () => {
     if (!(name === "" || amount === "" || date === "")) {
         console.log(`form sumitted, name = ${name}, amount = ${amount}, date = ${new Date(date)}`);
