@@ -1,27 +1,38 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../App";
 
-function ExpenseForm({setshowForm}) {
+function ExpenseForm({ setshowForm }) {
   const [name, setname] = useState("");
   const [amount, setamount] = useState("");
   const [date, setdate] = useState("");
   const [expenses, setexpenses] = useContext(UserContext);
 
 
-  useEffect(() => {
-  console.log(expenses);
-}, [expenses])
-
 
   const handleSubmit = () => {
     if (!(name === "" || amount === "" || date === "")) {
-        console.log(`form sumitted, name = ${name}, amount = ${amount}, date = ${new Date(date)}`);
-        setname('');
-        setamount('');
-        setdate('');
-    }
-    else{
-        console.log('fill all values');
+      console.log(
+        `form sumitted, name = ${name}, amount = ${amount}, date = ${new Date(
+          date
+        )}`
+      );
+      setname("");
+      setamount("");
+      setdate("");
+      setexpenses((items) => {
+        const num = parseInt(items[items.length - 1].id.split("")[1]) + 1;
+        return [
+          ...items,
+          {
+            id: `e${num}`,
+            title: name,
+            amount: amount,
+            date: new Date(date),
+          },
+        ];
+      });
+    } else {
+      console.log("fill all values");
     }
   };
   return (
@@ -64,7 +75,9 @@ function ExpenseForm({setshowForm}) {
         />
       </div>
       <div className="col-12 new-expense__actions">
-        <button className="alternative" onClick={()=>setshowForm(false)}>Cancle</button>
+        <button className="alternative" onClick={() => setshowForm(false)}>
+          Cancle
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>

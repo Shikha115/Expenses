@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ExpenseForm from "./ExpenseForm";
 import ExpenseItem from "./ExpenseItem";
+import ExpensesFilter from "./ExpensesFilter";
 import NewExpense from "./NewExpense";
 
 function Expenses({ data }) {
@@ -15,6 +16,7 @@ function Expenses({ data }) {
       <section className="expense-sec">
         <div className="container">
           {showForm?<ExpenseForm setshowForm={setshowForm} />:<NewExpense setshowForm={setshowForm} />}
+          <ExpensesFilter />
           {data.map((item, i) => {
             return (
               <ExpenseItem
