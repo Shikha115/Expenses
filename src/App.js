@@ -27,17 +27,16 @@ function App() {
       date: new Date(2019, 5, 12),
     },
   ]);
-  const [Filter, setFilter] = useState([]);
+  
 
   useEffect(() => {
     setexpenses(expenses);
-    setFilter(Filter);
-    console.log('app.js',expenses,'expense',Filter,'filter');
-  }, [expenses,Filter]);
+    console.log('app.js',expenses,'expense');
+  }, [expenses]);
 
   return (
-    <UserContext.Provider value={[expenses, setexpenses, setFilter]}>
-      <Expenses data={Filter.length>0?Filter:expenses} />
+    <UserContext.Provider value={[expenses, setexpenses]}>
+      <Expenses data={expenses} />
     </UserContext.Provider>
   );
 }
