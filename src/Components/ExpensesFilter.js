@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 function ExpensesFilter({ handleFilter, expenses }) {
   const [arrayType, setarrayType] = useState([])
-  const setArray=()=>{
-    let temp=[];
-    let store=temp.filter
-    for(let i=0;i<expenses.length;i++){
-expenses[i].push
-    }
-  }
+//   const setArray=()=>{
+//     let temp=[];
+//     let store=temp.filter
+//     for(let i=0;i<expenses.length;i++){
+// expenses[i].push
+//     }
+//   }
   return (
     <div className="expenses-filter">
       <div className="expenses-filter__control">
