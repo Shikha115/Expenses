@@ -52,7 +52,7 @@ function Expenses({ data }) {
           ) : (
             <NewExpense setshowForm={setshowForm} />
           )}
-          <ExpensesFilter handleFilter={handleFilter} />
+          <ExpensesFilter handleFilter={handleFilter} expenses={data} />
           {Filter.length > 0
             ? Filter.map((item, i) => {
                 return (
