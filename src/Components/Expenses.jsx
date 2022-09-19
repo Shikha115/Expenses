@@ -34,13 +34,14 @@ function Expenses({ data }) {
         return item;
       }
     });
-    if (temp === -1) {
+    console.log("expenses", temp, "new filter array", value);
+    setFilter([...temp]);
+    if (Filter.length === 0) {
       setMessage(true);
-    } else {
+    }
+    else {
       setMessage(false);
     }
-    console.log("expenses", temp, "new filter array");
-    setFilter([...temp]);
   };
 
   return (
@@ -53,6 +54,9 @@ function Expenses({ data }) {
             <NewExpense setshowForm={setshowForm} />
           )}
           <ExpensesFilter handleFilter={handleFilter} expenses={data} />
+          {Message && (
+            <p className="text-white fw-bold">No expenses on {SelectValue} year</p>
+          )}
           {Filter.length > 0
             ? Filter.map((item, i) => {
                 return (
@@ -74,7 +78,6 @@ function Expenses({ data }) {
                   />
                 );
               })}
-          {Message && <p>No expenses on {SelectValue} year</p>}
         </div>
       </section>
     </main>

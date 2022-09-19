@@ -31,6 +31,7 @@ function ExpenseForm({ setshowForm }) {
           },
         ];
       });
+      setshowForm(false);
     } else {
       console.log("fill all values");
     }
